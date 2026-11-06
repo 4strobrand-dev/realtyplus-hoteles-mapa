@@ -1,0 +1,19 @@
+MAPA INTERACTIVO GLOBAL - 76 activos hoteleros en 9 paises (Realtyplus / Investplus)
+Uso interno, red de franquiciados.
+
+Ver en local (desde esta carpeta):
+  python -m http.server 8795      ->  http://127.0.0.1:8795/
+
+Actualizar fotos y datos:
+  python tools/importar_fotos.py
+  - Lee ..\<Pais>\02 Fotos\Hoteles\<Referencia>\  (fotos del activo; orden segun "recomendadas" de fotos.json)
+         ..\<Pais>\02 Fotos\Destinos\<zona>\      (foto del destino, por las "claves_destino" de datos\coordenadas.json)
+  - Optimiza a assets\img\ (max. 1280 px, JPG calidad 78) y genera assets\data\fotos.js y assets\data\activos.js
+  - Orden de imagen en la web: foto propia -> foto del destino -> placeholder de marca con el nombre de la zona.
+
+Datos:
+  datos\activos_todos.json  datos del cliente (sin modificar)
+  datos\coordenadas.json    coordenadas aproximadas de cada ciudad/zona + zona para el filtro
+  La web solo publica los campos que muestra (sin honorarios ni datos de captacion).
+
+Formulario "Solicitar informacion": demostracion, no envia nada.

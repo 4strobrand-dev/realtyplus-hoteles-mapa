@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Activos hoteleros · Mapa global | Realtyplus Investplus</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#003F79">
+<link rel="icon" type="image/png" href="assets/img/logo-realtyplus.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<link rel="stylesheet" href="assets/css/style.css?v=3">
+</head>
+<body>
+<div id="map" aria-label="Mapa mundial de activos hoteleros"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="assets/img/logo-realtyplus.png" alt="Realtyplus" class="brand-logo" width="420" height="156">
+    <span class="brand-sep" aria-hidden="true"></span>
+    <span class="brand-invest">INVEST<b>PLUS</b></span>
+  </div>
+  <dl class="stats" aria-label="Resumen">
+    <div class="stat"><dd id="st-activos">76</dd><dt>activos</dt></div>
+    <div class="stat"><dd id="st-paises">9</dd><dt>países</dt></div>
+    <div class="stat" id="st-hab-box"><dd id="st-hab">–</dd><dt>habitaciones</dt></div>
+  </dl>
+  <button class="btn btn-red btn-cta" type="button" data-open-form>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    <span class="cta-long">Solicitar información</span><span class="cta-short">Info</span>
+  </button>
+</header>
+
+<nav class="filterbar" aria-label="Filtros">
+  <div class="chips-scroll" id="f-pais" role="group" aria-label="Filtrar por país"></div>
+  <div class="filter-actions">
+    <button type="button" class="fbtn" id="btn-filtros" aria-expanded="false" aria-controls="filtros-pop">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span>Filtros</span><i class="badge" id="f-badge" hidden></i>
+    </button>
+  </div>
+  <div class="filtros-pop" id="filtros-pop" hidden>
+    <div class="pop-head"><strong>Filtros</strong><button type="button" class="icon-x" id="filtros-close" aria-label="Cerrar filtros">&times;</button></div>
+    <div class="filter-group" id="g-region">
+      <span class="filter-label">Zona</span>
+      <div class="chips" id="f-region" role="group" aria-label="Filtrar por zona"></div>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Tipo de activo</span>
+      <div class="chips" id="f-tipo" role="group" aria-label="Filtrar por tipo"></div>
+    </div>
+    <div class="pop-foot">
+      <button type="button" class="link-btn" id="reset">Quitar filtros</button>
+      <button type="button" class="btn btn-blue" id="filtros-ok">Ver <span id="f-ok-n">76</span> activos</button>
+    </div>
+  </div>
+</nav>
+
+<div class="map-tools">
+  <button type="button" class="tool" id="btn-world" aria-label="Vista global" title="Vista global">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg>
+  </button>
+</div>
+
+<button type="button" class="list-toggle" id="btn-lista">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <span>Ver lista</span> <b id="lista-n">76</b>
+</button>
+
+<section class="tray" id="tray" aria-label="Activos en esta vista" hidden>
+  <div class="tray-head">
+    <p class="tray-title"><strong id="tray-title">Todos los países</strong><span id="tray-count"></span></p>
+    <button type="button" class="icon-x" id="tray-close" aria-label="Ocultar lista">&times;</button>
+  </div>
+  <div class="tray-list" id="tray-list"></div>
+</section>
+
+<div class="legend" id="legend" aria-hidden="true"></div>
+
+<!-- Ficha completa -->
+<div class="modal modal-ficha" id="ficha" hidden>
+  <div class="modal-backdrop" data-close-ficha></div>
+  <article class="ficha-card" role="dialog" aria-modal="true" aria-labelledby="ficha-title">
+    <button class="modal-x" type="button" data-close-ficha aria-label="Cerrar ficha">&times;</button>
+    <div class="ficha-scroll" id="ficha-body"></div>
+  </article>
+</div>
+
+<!-- Formulario demo -->
+<div class="modal modal-form" id="modal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-x" type="button" data-close aria-label="Cerrar">&times;</button>
+    <form id="lead-form" novalidate>
+      <h2 id="modal-title">Solicitar información</h2>
+      <p class="modal-sub">Te enviaremos el dossier completo del activo.</p>
+      <label>Nombre y apellidos<input name="nombre" required autocomplete="name"></label>
+      <div class="row2">
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <label>Teléfono<input name="tel" type="tel" autocomplete="tel"></label>
+      </div>
+      <label>Oficina / franquicia<input name="oficina" autocomplete="organization"></label>
+      <label>Activo de interés<select name="activo" id="f-activo"><option value="">Todos los activos</option></select></label>
+      <label>Mensaje<textarea name="msg" rows="3" placeholder="Perfil del comprador, plazos…"></textarea></label>
+      <button class="btn btn-red btn-block" type="submit">Enviar solicitud</button>
+    </form>
+    <div class="modal-ok" id="lead-ok" hidden>
+      <div class="ok-icon"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h2>¡Solicitud recibida!</h2>
+      <p>Gracias. El equipo Investplus se pondrá en contacto contigo en breve.</p>
+      <button class="btn btn-blue" type="button" data-close>Volver al mapa</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="assets/data/activos.js?v=202611061450"></script>
+<script src="assets/data/fotos.js?v=202611061450"></script>
+<script src="assets/js/app.js?v=11"></script>
+</body>
+</html>

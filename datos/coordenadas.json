@@ -1,0 +1,764 @@
+{
+ "_nota": "Coordenadas aproximadas de la ciudad/zona genérica (no de la parcela exacta). Revisadas a mano.",
+ "activos": {
+  "Venezuela 1": {
+   "lat": 11.035,
+   "lng": -63.905,
+   "zona": "Isla de Margarita",
+   "region": "Isla de Margarita",
+   "claves_destino": [
+    "isla de margarita",
+    "margarita",
+    "playa el agua"
+   ]
+  },
+  "Venezuela 2": {
+   "lat": 10.958,
+   "lng": -63.85,
+   "zona": "Porlamar, Isla de Margarita",
+   "region": "Isla de Margarita",
+   "claves_destino": [
+    "porlamar",
+    "isla de margarita",
+    "margarita"
+   ]
+  },
+  "Venezuela 3": {
+   "lat": 10.801,
+   "lng": -68.333,
+   "zona": "Tucacas, Falcón",
+   "region": "Falcón",
+   "claves_destino": [
+    "tucacas",
+    "morrocoy"
+   ]
+  },
+  "Venezuela 4": {
+   "lat": 10.783,
+   "lng": -68.306,
+   "zona": "Tucacas, Falcón",
+   "region": "Falcón",
+   "claves_destino": [
+    "tucacas",
+    "morrocoy"
+   ]
+  },
+  "Venezuela 5": {
+   "lat": 8.59,
+   "lng": -71.156,
+   "zona": "Mérida",
+   "region": "Mérida",
+   "claves_destino": [
+    "merida"
+   ]
+  },
+  "Venezuela 6": {
+   "lat": 11.699,
+   "lng": -70.199,
+   "zona": "Punto Fijo, Falcón",
+   "region": "Falcón",
+   "claves_destino": [
+    "punto fijo",
+    "paraguana"
+   ]
+  },
+  "Venezuela 7": {
+   "lat": 11.414,
+   "lng": -69.684,
+   "zona": "Coro, Falcón",
+   "region": "Falcón",
+   "claves_destino": [
+    "coro"
+   ]
+  },
+  "Venezuela 8": {
+   "lat": 11.94,
+   "lng": -69.803,
+   "zona": "Adícora, Falcón",
+   "region": "Falcón",
+   "claves_destino": [
+    "adicora",
+    "paraguana"
+   ]
+  },
+  "Venezuela 9": {
+   "lat": 11.396,
+   "lng": -69.66,
+   "zona": "Coro, Falcón",
+   "region": "Falcón",
+   "claves_destino": [
+    "coro"
+   ]
+  },
+  "República Dominicana 1": {
+   "lat": 18.582,
+   "lng": -68.405,
+   "zona": "Punta Cana",
+   "region": "Punta Cana y Bayahíbe",
+   "claves_destino": [
+    "punta cana",
+    "bavaro"
+   ]
+  },
+  "República Dominicana 2": {
+   "lat": 18.582,
+   "lng": -68.405,
+   "zona": "Punta Cana",
+   "region": "Punta Cana y Bayahíbe",
+   "claves_destino": [
+    "punta cana",
+    "bavaro"
+   ]
+  },
+  "República Dominicana 3": {
+   "lat": 18.582,
+   "lng": -68.405,
+   "zona": "Punta Cana",
+   "region": "Punta Cana y Bayahíbe",
+   "claves_destino": [
+    "punta cana",
+    "bavaro"
+   ]
+  },
+  "República Dominicana 4": {
+   "lat": 18.582,
+   "lng": -68.405,
+   "zona": "Punta Cana",
+   "region": "Punta Cana y Bayahíbe",
+   "claves_destino": [
+    "punta cana",
+    "bavaro"
+   ]
+  },
+  "República Dominicana 5": {
+   "lat": 19.86,
+   "lng": -71.6,
+   "zona": "Montecristi (Punta Presidente)",
+   "region": "Montecristi",
+   "claves_destino": [
+    "punta presidente",
+    "montecristi",
+    "monte cristi"
+   ]
+  },
+  "República Dominicana 6": {
+   "lat": 18.99,
+   "lng": -68.93,
+   "zona": "Miches (Las Lisas)",
+   "region": "Miches",
+   "claves_destino": [
+    "las lisas",
+    "miches"
+   ]
+  },
+  "República Dominicana 7": {
+   "lat": 18.983,
+   "lng": -69.047,
+   "zona": "Miches",
+   "region": "Miches",
+   "claves_destino": [
+    "miches"
+   ]
+  },
+  "República Dominicana 8": {
+   "lat": 19.23,
+   "lng": -69.4,
+   "zona": "Península de Samaná",
+   "region": "Samaná",
+   "claves_destino": [
+    "peninsula de samana",
+    "samana"
+   ]
+  },
+  "República Dominicana 9": {
+   "lat": 19.318,
+   "lng": -69.565,
+   "zona": "Las Terrenas (Playa Bonita)",
+   "region": "Samaná",
+   "claves_destino": [
+    "playa bonita",
+    "las terrenas",
+    "samana"
+   ]
+  },
+  "República Dominicana 10": {
+   "lat": 18.12,
+   "lng": -71.09,
+   "zona": "Barahona (El Arroyo, Ciénaga)",
+   "region": "Barahona",
+   "claves_destino": [
+    "el arroyo",
+    "cienaga",
+    "barahona"
+   ]
+  },
+  "República Dominicana 11": {
+   "lat": 19.793,
+   "lng": -70.689,
+   "zona": "Puerto Plata",
+   "region": "Costa Norte",
+   "claves_destino": [
+    "puerto plata"
+   ]
+  },
+  "República Dominicana 12": {
+   "lat": 18.367,
+   "lng": -68.838,
+   "zona": "Bayahíbe",
+   "region": "Punta Cana y Bayahíbe",
+   "claves_destino": [
+    "bayahibe",
+    "dominicus"
+   ]
+  },
+  "República Dominicana 13": {
+   "lat": 19.64,
+   "lng": -69.902,
+   "zona": "Cabrera",
+   "region": "Costa Norte",
+   "claves_destino": [
+    "cabrera"
+   ]
+  },
+  "República Dominicana 14": {
+   "lat": 19.56,
+   "lng": -69.92,
+   "zona": "Cabrera (La Entrada)",
+   "region": "Costa Norte",
+   "claves_destino": [
+    "la entrada",
+    "cabrera"
+   ]
+  },
+  "República Dominicana 15": {
+   "lat": 19.765,
+   "lng": -70.45,
+   "zona": "Costa Norte",
+   "region": "Costa Norte",
+   "claves_destino": [
+    "costa norte",
+    "sosua",
+    "cabarete"
+   ]
+  },
+  "República Dominicana 16": {
+   "lat": 19.765,
+   "lng": -70.45,
+   "zona": "Costa Norte",
+   "region": "Costa Norte",
+   "claves_destino": [
+    "costa norte",
+    "sosua",
+    "cabarete"
+   ]
+  },
+  "USA 1": {
+   "lat": 26.011,
+   "lng": -80.118,
+   "zona": "Hollywood Beach, Florida",
+   "region": "Sur de Florida",
+   "claves_destino": [
+    "hollywood beach",
+    "hollywood"
+   ]
+  },
+  "USA 2": {
+   "lat": 25.79,
+   "lng": -80.13,
+   "zona": "Miami Beach, Florida",
+   "region": "Sur de Florida",
+   "claves_destino": [
+    "miami beach",
+    "miami"
+   ]
+  },
+  "USA 3": {
+   "lat": 25.795,
+   "lng": -80.287,
+   "zona": "Miami Airport, Florida",
+   "region": "Sur de Florida",
+   "claves_destino": [
+    "miami airport",
+    "aeropuerto",
+    "miami"
+   ]
+  },
+  "USA 4": {
+   "lat": 25.79,
+   "lng": -80.13,
+   "zona": "Miami Beach, Florida",
+   "region": "Sur de Florida",
+   "claves_destino": [
+    "miami beach",
+    "miami"
+   ]
+  },
+  "USA 5": {
+   "lat": 25.79,
+   "lng": -80.13,
+   "zona": "Miami Beach, Florida",
+   "region": "Sur de Florida",
+   "claves_destino": [
+    "miami beach",
+    "miami"
+   ]
+  },
+  "USA 6": {
+   "lat": 25.79,
+   "lng": -80.13,
+   "zona": "Miami Beach, Florida",
+   "region": "Sur de Florida",
+   "claves_destino": [
+    "miami beach",
+    "miami"
+   ]
+  },
+  "España 1": {
+   "lat": 40.948,
+   "lng": -4.118,
+   "zona": "Provincia de Segovia",
+   "region": "Castilla y León",
+   "claves_destino": [
+    "segovia"
+   ]
+  },
+  "España 2": {
+   "lat": 39.862,
+   "lng": -4.027,
+   "zona": "Toledo",
+   "region": "Castilla-La Mancha",
+   "claves_destino": [
+    "toledo"
+   ]
+  },
+  "España 3": {
+   "lat": 36.51,
+   "lng": -4.883,
+   "zona": "Marbella, Costa del Sol",
+   "region": "Costa del Sol",
+   "claves_destino": [
+    "marbella",
+    "costa del sol"
+   ]
+  },
+  "España 4": {
+   "lat": 36.721,
+   "lng": -4.421,
+   "zona": "Centro de Málaga, Costa del Sol",
+   "region": "Costa del Sol",
+   "claves_destino": [
+    "malaga",
+    "costa del sol"
+   ]
+  },
+  "España 5": {
+   "lat": 36.721,
+   "lng": -4.421,
+   "zona": "Centro de Málaga, Costa del Sol",
+   "region": "Costa del Sol",
+   "claves_destino": [
+    "malaga",
+    "costa del sol"
+   ]
+  },
+  "España 6": {
+   "lat": 36.62,
+   "lng": -4.5,
+   "zona": "Torremolinos, Costa del Sol",
+   "region": "Costa del Sol",
+   "claves_destino": [
+    "torremolinos",
+    "costa del sol"
+   ]
+  },
+  "España 7": {
+   "lat": 42.6,
+   "lng": 0.3,
+   "zona": "Pirineo",
+   "region": "Pirineo",
+   "claves_destino": [
+    "pirineo",
+    "pirineos"
+   ]
+  },
+  "España 8": {
+   "lat": 43.2,
+   "lng": -4.0,
+   "zona": "Cantabria",
+   "region": "Cantabria",
+   "claves_destino": [
+    "cantabria"
+   ]
+  },
+  "España 9": {
+   "lat": 38.414,
+   "lng": -0.445,
+   "zona": "Mutxamel, Alicante",
+   "region": "Comunidad Valenciana",
+   "claves_destino": [
+    "mutxamel",
+    "alicante"
+   ]
+  },
+  "España 10": {
+   "lat": 40.633,
+   "lng": -3.167,
+   "zona": "Guadalajara",
+   "region": "Castilla-La Mancha",
+   "claves_destino": [
+    "guadalajara"
+   ]
+  },
+  "España 11": {
+   "lat": 38.979,
+   "lng": -0.687,
+   "zona": "Enguera, Valencia",
+   "region": "Comunidad Valenciana",
+   "claves_destino": [
+    "enguera",
+    "valencia"
+   ]
+  },
+  "España 12": {
+   "lat": 41.312,
+   "lng": 1.811,
+   "zona": "Olivella, Barcelona",
+   "region": "Cataluña",
+   "claves_destino": [
+    "olivella",
+    "barcelona",
+    "garraf"
+   ]
+  },
+  "España 13": {
+   "lat": 42.388,
+   "lng": -2.96,
+   "zona": "Santurde de Rioja, La Rioja",
+   "region": "La Rioja",
+   "claves_destino": [
+    "santurde",
+    "rioja"
+   ]
+  },
+  "España 14": {
+   "lat": 40.555,
+   "lng": -2.648,
+   "zona": "Pareja, Guadalajara",
+   "region": "Castilla-La Mancha",
+   "claves_destino": [
+    "pareja",
+    "guadalajara"
+   ]
+  },
+  "España 15": {
+   "lat": 42.31,
+   "lng": 1.39,
+   "zona": "Ribera d'Urgellet, Lleida",
+   "region": "Pirineo",
+   "claves_destino": [
+    "ribera d urgellet",
+    "urgellet",
+    "lleida",
+    "pirineo"
+   ]
+  },
+  "México 1": {
+   "lat": 24.142,
+   "lng": -110.313,
+   "zona": "La Paz, Baja California Sur",
+   "region": "Baja California Sur",
+   "claves_destino": [
+    "la paz",
+    "baja california"
+   ]
+  },
+  "Argentina 1": {
+   "lat": -32.958,
+   "lng": -69.195,
+   "zona": "Potrerillos, Mendoza",
+   "region": "Mendoza · Montaña",
+   "claves_destino": [
+    "potrerillos",
+    "mendoza"
+   ]
+  },
+  "Argentina 2": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza Capital",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza capital",
+    "mendoza"
+   ]
+  },
+  "Argentina 3": {
+   "lat": -35.03,
+   "lng": -68.68,
+   "zona": "El Nihuil, San Rafael, Mendoza",
+   "region": "San Rafael",
+   "claves_destino": [
+    "nihuil",
+    "san rafael",
+    "mendoza"
+   ]
+  },
+  "Argentina 4": {
+   "lat": -35.03,
+   "lng": -68.68,
+   "zona": "El Nihuil, San Rafael, Mendoza",
+   "region": "San Rafael",
+   "claves_destino": [
+    "nihuil",
+    "san rafael",
+    "mendoza"
+   ]
+  },
+  "Argentina 5": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 6": {
+   "lat": -31.651,
+   "lng": -69.47,
+   "zona": "Barreal, San Juan",
+   "region": "San Juan",
+   "claves_destino": [
+    "barreal",
+    "san juan"
+   ]
+  },
+  "Argentina 7": {
+   "lat": -32.9,
+   "lng": -68.79,
+   "zona": "Guaymallén, Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "guaymallen",
+    "mendoza"
+   ]
+  },
+  "Argentina 8": {
+   "lat": -32.985,
+   "lng": -68.876,
+   "zona": "Chacras de Coria, Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "chacras de coria",
+    "lujan de cuyo",
+    "mendoza"
+   ]
+  },
+  "Argentina 9": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza Capital",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza capital",
+    "mendoza"
+   ]
+  },
+  "Argentina 10": {
+   "lat": -32.985,
+   "lng": -68.876,
+   "zona": "Chacras de Coria, Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "chacras de coria",
+    "lujan de cuyo",
+    "mendoza"
+   ]
+  },
+  "Argentina 11": {
+   "lat": -33.13,
+   "lng": -68.95,
+   "zona": "Alto Agrelo, Luján de Cuyo",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "agrelo",
+    "lujan de cuyo",
+    "mendoza"
+   ]
+  },
+  "Argentina 12": {
+   "lat": -33.65,
+   "lng": -69.17,
+   "zona": "Vista Flores, Tunuyán",
+   "region": "Valle de Uco",
+   "claves_destino": [
+    "vista flores",
+    "vistaflores",
+    "tunuyan",
+    "valle de uco",
+    "mendoza"
+   ]
+  },
+  "Argentina 13": {
+   "lat": -38.005,
+   "lng": -57.552,
+   "zona": "Mar del Plata",
+   "region": "Mar del Plata",
+   "claves_destino": [
+    "mar del plata"
+   ]
+  },
+  "Argentina 14": {
+   "lat": -38.005,
+   "lng": -57.552,
+   "zona": "Mar del Plata",
+   "region": "Mar del Plata",
+   "claves_destino": [
+    "mar del plata"
+   ]
+  },
+  "Argentina 15": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 16": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 17": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 18": {
+   "lat": -33.025,
+   "lng": -71.552,
+   "zona": "V Región (Valparaíso)",
+   "region": "V Región",
+   "claves_destino": [
+    "v region",
+    "valparaiso",
+    "vina del mar"
+   ]
+  },
+  "Argentina 19": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 20": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 21": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 22": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 23": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 24": {
+   "lat": -32.889,
+   "lng": -68.845,
+   "zona": "Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "mendoza"
+   ]
+  },
+  "Argentina 25": {
+   "lat": -32.985,
+   "lng": -68.76,
+   "zona": "Maipú, Mendoza (Ruta 60)",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "maipu",
+    "mendoza"
+   ]
+  },
+  "Argentina 26": {
+   "lat": -33.035,
+   "lng": -68.73,
+   "zona": "Chachingo, Maipú, Mendoza",
+   "region": "Gran Mendoza",
+   "claves_destino": [
+    "chachingo",
+    "maipu",
+    "mendoza"
+   ]
+  },
+  "Paraguay 1": {
+   "lat": -25.282,
+   "lng": -57.635,
+   "zona": "Asunción",
+   "region": "Asunción",
+   "claves_destino": [
+    "asuncion"
+   ]
+  },
+  "Grecia 1": {
+   "lat": 40.25,
+   "lng": 23.5,
+   "zona": "Halkidiki",
+   "region": "Halkidiki",
+   "claves_destino": [
+    "halkidiki",
+    "chalkidiki",
+    "calcidica"
+   ]
+  },
+  "Grecia 2": {
+   "lat": 39.624,
+   "lng": 19.922,
+   "zona": "Corfú",
+   "region": "Corfú",
+   "claves_destino": [
+    "corfu",
+    "kerkyra"
+   ]
+  }
+ }
+}
