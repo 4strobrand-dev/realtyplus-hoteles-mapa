@@ -1,0 +1,31 @@
+MAPA INTERACTIVO GLOBAL v2 - activos hoteleros (Realtyplus / Investplus)
+Uso interno, red de franquiciados. Prototipo: Tecnologia termina la implantacion.
+
+QUE CAMBIA EN LA v2
+- Bilingue: selector ES / EN arriba (tambien ?lang=en en la URL).
+- Sin fotos y sin direccion exacta: cada activo muestra solo su ciudad (punto en el centro urbano).
+  Las fotos y datos de la v1 estan en  ..\_archivo mapa v1 (con fotos)\
+- Panel de administracion en /admin: entrar con el usuario general y crear, editar, ocultar o eliminar activos.
+  Los cambios aparecen en el mapa al recargar la pagina.
+
+ESTRUCTURA
+  index.html, assets/js/app.js, assets/css/style.css   mapa publico
+  admin/                                               panel (login + alta/edicion/baja)
+  assets/js/config.js                                  URL y clave publicable de Supabase (si esta vacio: usa la copia local)
+  assets/data/activos_publicos.json                    copia local de los 76 activos (modo demostracion)
+  sql/01_esquema.sql                                   tabla "activos" + seguridad RLS (lectura publica, escritura solo con login)
+  sql/02_datos.sql                                     carga inicial de los 76 activos
+  tools/migracion.py                                   regenera sql/02_datos.sql y el JSON desde los datos del cliente
+
+BACKEND (Supabase, proyecto "realtyplus-hoteles", ref vugcfuhzspexscfsomdb, region Europa) - YA CONFIGURADO 11/11/2026
+  - Tabla public.activos creada (sql/01_esquema.sql) y cargados los 76 activos (sql/02_datos.sql).
+  - Usuario general creado: credenciales en ACCESO-ADMIN.txt (archivo privado, no se sube a GitHub).
+  - Registro publico de usuarios DESACTIVADO (solo entra quien se cree en Authentication > Users).
+  - config.js ya apunta al proyecto. Probado: alta, edicion, ocultar, borrar; el publico no ve ocultos ni puede escribir.
+
+PENDIENTE PARA TECNOLOGIA
+- Usuarios por persona/oficina y roles (hoy hay un unico usuario general).
+- Conectar el formulario "Solicitar informacion" (hoy es demostracion).
+- Dominio propio con HTTPS; la clave publicable es publica por diseno, la seguridad esta en las politicas RLS.
+
+Ver en local (desde esta carpeta):  python -m http.server 8795  ->  http://127.0.0.1:8795/  y  /admin/

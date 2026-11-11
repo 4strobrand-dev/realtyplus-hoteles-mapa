@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+Thumbs.db
+.DS_Store
+
+# datos internos (honorarios, captadores, NDA): no publicar
+datos/activos_todos.json
+
+# credenciales del panel
+ACCESO-ADMIN.txt
+datos/
