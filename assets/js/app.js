@@ -18,44 +18,15 @@
   /* =========================================================
      Idioma (ES / EN)
      ========================================================= */
-  var T = {
-    es: {
-      activos: 'activos', activo: 'activo', paises: 'países', habitaciones: 'habitaciones', info: 'Solicitar información', infoShort: 'Info',
-      filtros: 'Filtros', zona: 'Zona', tipo: 'Tipo de activo', quitar: 'Quitar filtros', ver: 'Ver', todos: 'Todos', todas: 'Todas',
-      eligePais: 'Elige un país para ver sus zonas.', unaZona: 'una sola zona', vistaGlobal: 'Vista global', verLista: 'Ver lista',
-      todosPaises: 'Todos los países', enVista: 'En esta vista', ocultar: 'Ocultar lista', vacio: 'No hay activos en esta zona del mapa. Aleja el mapa o pulsa el globo para la vista global.',
-      precio: 'Precio', consultar: 'Precio a consultar', habs: 'Habitaciones', sup: 'Superficie', fichaBtn: 'Ver ficha completa', hab: 'hab.',
-      categoria: 'Categoría', operacion: 'Tipo de operación', estado: 'Estado comercial', ciudad: 'Ciudad', pais: 'País', moneda: 'Moneda',
-      usd: 'Dólar estadounidense (USD)', eur: 'Euro (EUR)', descripcion: 'Descripción', ubic: 'Ubicación aproximada: se muestra solo la ciudad.',
-      cerrar: 'Cerrar', acercar: 'Acercar', alejar: 'Alejar', formTitle: 'Solicitar información', formSub: 'Te enviaremos el dossier completo del activo.',
-      nombre: 'Nombre y apellidos', email: 'Email', tel: 'Teléfono', oficina: 'Oficina / franquicia', interes: 'Activo de interés', todosActivos: 'Todos los activos',
-      mensaje: 'Mensaje', msgPh: 'Perfil del comprador, plazos…', enviar: 'Enviar solicitud', okT: '¡Solicitud recibida!', okP: 'Gracias. El equipo Investplus se pondrá en contacto contigo en breve.',
-      volver: 'Volver al mapa', cargando: 'Cargando activos…', errorCarga: 'No se pudieron cargar los activos. Inténtalo de nuevo más tarde.',
-      tipos: { hotel: 'Hoteles y complejos', obra: 'En obra / proyecto', reforma: 'Cerrado / para reforma', suelo: 'Suelo y terrenos', otros: 'Otros activos' }
-    },
-    en: {
-      activos: 'assets', activo: 'asset', paises: 'countries', habitaciones: 'rooms', info: 'Request information', infoShort: 'Info',
-      filtros: 'Filters', zona: 'Area', tipo: 'Asset type', quitar: 'Clear filters', ver: 'Show', todos: 'All', todas: 'All',
-      eligePais: 'Choose a country to see its areas.', unaZona: 'single area', vistaGlobal: 'World view', verLista: 'Show list',
-      todosPaises: 'All countries', enVista: 'In this view', ocultar: 'Hide list', vacio: 'No assets in this part of the map. Zoom out or tap the globe for the world view.',
-      precio: 'Price', consultar: 'Price on request', habs: 'Rooms', sup: 'Area', fichaBtn: 'View full details', hab: 'rooms',
-      categoria: 'Category', operacion: 'Transaction', estado: 'Status', ciudad: 'City', pais: 'Country', moneda: 'Currency',
-      usd: 'US dollar (USD)', eur: 'Euro (EUR)', descripcion: 'Description', ubic: 'Approximate location: only the city is shown.',
-      cerrar: 'Close', acercar: 'Zoom in', alejar: 'Zoom out', formTitle: 'Request information', formSub: 'We will send you the full asset dossier.',
-      nombre: 'Full name', email: 'Email', tel: 'Phone', oficina: 'Office / franchise', interes: 'Asset of interest', todosActivos: 'All assets',
-      mensaje: 'Message', msgPh: 'Buyer profile, timing…', enviar: 'Send request', okT: 'Request received!', okP: 'Thank you. The Investplus team will contact you shortly.',
-      volver: 'Back to the map', cargando: 'Loading assets…', errorCarga: 'Assets could not be loaded. Please try again later.',
-      tipos: { hotel: 'Hotels and resorts', obra: 'Under construction / project', reforma: 'Closed / to refurbish', suelo: 'Land and plots', otros: 'Other assets' }
-    }
-  };
+  var I18N = window.RP_I18N, T = I18N.ui;
   var LANG = (function () {
     var q = new URLSearchParams(location.search).get('lang');
-    if (q === 'en' || q === 'es') return q;
-    try { var s = localStorage.getItem('rp-lang'); if (s === 'en' || s === 'es') return s; } catch (e) {}
-    return (navigator.language || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
+    if (I18N.idiomas.indexOf(q) >= 0) return q;
+    try { var s = localStorage.getItem('rp-lang'); if (I18N.idiomas.indexOf(s) >= 0) return s; } catch (e) {}
+    var nav = (navigator.language || 'es').slice(0, 2);
+    return I18N.idiomas.indexOf(nav) >= 0 ? nav : 'es';
   })();
-  function t(k) { return T[LANG][k]; }
-  function L(a, k) { return LANG === 'en' ? (a[k + '_en'] || a[k + '_es'] || '') : (a[k + '_es'] || ''); }
+  function t(k) { return (T[LANG] && T[LANG][k]) || T.es[k]; }
 
   function miles(n) {
     var s = (Math.round(n * 100) / 100).toFixed(n % 1 ? 2 : 0).split('.');
@@ -68,7 +39,7 @@
     return 'US$ ' + miles(a.precio);
   }
   function habInfo(a) {
-    var s = L(a, 'habitaciones');
+    var s = I18N.texto(a, 'habitaciones', LANG);
     if (!s) return null;
     var sup = /m²|m2|\bha\b|terreno|plot|útiles|usable/i.test(s);
     return { label: sup ? t('sup') : t('habs'), txt: /^\d+$/.test(s) ? miles(+s) : s };
@@ -85,6 +56,8 @@
      Textos fijos de la página
      ========================================================= */
   function aplicarIdioma() {
+    var sw = $('.lang-switch');
+    if (sw) sw.innerHTML = I18N.idiomas.map(function (l) { return '<button type="button" data-lang="' + l + '">' + l.toUpperCase() + '</button>'; }).join('');
     document.documentElement.lang = LANG;
     $$('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
     $$('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
@@ -92,13 +65,14 @@
     $$('.lang-switch button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === LANG); });
   }
   aplicarIdioma();
-  $$('.lang-switch button').forEach(function (b) {
-    b.addEventListener('click', function () {
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.lang-switch button');
+    if (b) {
       var l = b.getAttribute('data-lang');
       if (l === LANG) return;
       try { localStorage.setItem('rp-lang', l); } catch (e) {}
       var u = new URL(location.href); u.searchParams.set('lang', l); location.href = u.toString();
-    });
+    }
   });
 
   /* =========================================================
@@ -125,23 +99,24 @@
      ========================================================= */
   function iniciar(rows) {
     if (loader) loader.remove();
-    var ORDEN_PAIS = ['argentina', 'republica-dominicana', 'espana', 'venezuela', 'estados-unidos', 'grecia', 'mexico', 'chile', 'paraguay'];
+    var ORDEN_PAIS = ['AR', 'DO', 'ES', 'VE', 'US', 'GR', 'MX', 'CL', 'PY'];
     var ANCLA = {
-      'venezuela': [5.8, -64.6], 'republica-dominicana': [19.8, -70.6], 'estados-unidos': [29.6, -83.6],
-      'espana': [40.0, -3.7], 'mexico': [24.6, -110.8], 'argentina': [-37.6, -63.2], 'chile': [-30.5, -70.9],
-      'paraguay': [-21.8, -56.8], 'grecia': [39.8, 22.0]
+      VE: [5.8, -64.6], DO: [19.8, -70.6], US: [29.6, -83.6], ES: [40.0, -3.7], MX: [24.6, -110.8],
+      AR: [-37.6, -63.2], CL: [-30.5, -70.9], PY: [-21.8, -56.8], GR: [39.8, 22.0]
     };
     var lista = rows.map(function (r, i) {
       var a = {
         i: i, id: slug(r.referencia) || ('a' + i), ref: r.referencia,
-        pais: LANG === 'en' ? (r.pais_en || r.pais) : r.pais, pk: slug(r.pais),
+        pais: I18N.pais(r.pais, LANG), pk: r.pais,
         zona: r.ciudad, region: r.region || r.ciudad, ll: [r.lat, r.lng],
-        tk: COLORS[r.tipo_clave] ? r.tipo_clave : 'otros',
-        tipo: L(r, 'tipo'), cat: L(r, 'categoria'), operacion: L(r, 'operacion'), estado: L(r, 'estado'), obs: L(r, 'descripcion'),
+        tk: I18N.grupo(r.tipo),
+        tipo: I18N.cat('tipo', r.tipo, LANG), cat: r.categoria ? I18N.cat('categoria', r.categoria, LANG) : '',
+        operacion: r.operacion ? I18N.cat('operacion', r.operacion, LANG) : '', estado: r.estado ? I18N.cat('estado', r.estado, LANG) : '',
+        obs: I18N.texto(r, 'descripcion', LANG),
         precio: r.precio == null ? null : +r.precio, moneda: r.moneda
       };
       a.hab = habInfo(r);
-      var h = (r.habitaciones_es || '').match(/^(\d+)$/);
+      var h = (r.habitaciones || '').match(/^(\d+)$/);
       a.habN = h ? +h[1] : 0;
       a.titulo = a.tipo || 'Hotel';
       return a;
@@ -202,7 +177,7 @@
       }
       var th = chip('tipo', '', t('todos'), cuenta('tipo', function () { return true; }));
       Object.keys(COLORS).forEach(function (k) {
-        th += chip('tipo', k, T[LANG].tipos[k], cuenta('tipo', function (a) { return a.tk === k; }), COLORS[k]);
+        th += chip('tipo', k, t('grupos')[k], cuenta('tipo', function (a) { return a.tk === k; }), COLORS[k]);
       });
       $('#f-tipo').innerHTML = th;
       var extra = (filtro.region ? 1 : 0) + (filtro.tipo ? 1 : 0);
@@ -428,7 +403,7 @@
     });
     map.on('movestart', function () { if (!pop.hidden && !isMobile()) togglePop(false); });
     $('#legend').innerHTML = Object.keys(COLORS).map(function (k) {
-      return '<div><i style="background:' + COLORS[k] + '"></i>' + T[LANG].tipos[k] + '</div>';
+      return '<div><i style="background:' + COLORS[k] + '"></i>' + t('grupos')[k] + '</div>';
     }).join('');
 
     /* ---------- Ficha (sin fotos: mapa de la ciudad) ---------- */

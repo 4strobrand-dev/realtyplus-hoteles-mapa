@@ -1,31 +1,40 @@
 MAPA INTERACTIVO GLOBAL v2 - activos hoteleros (Realtyplus / Investplus)
 Uso interno, red de franquiciados. Prototipo: Tecnologia termina la implantacion.
 
-QUE CAMBIA EN LA v2
-- Bilingue: selector ES / EN arriba (tambien ?lang=en en la URL).
-- Sin fotos y sin direccion exacta: cada activo muestra solo su ciudad (punto en el centro urbano).
+QUE HACE
+- Mapa publico multidioma (hoy ES / EN; selector arriba o ?lang=en en la URL).
+- Sin fotos y sin direccion exacta: cada activo muestra solo su ciudad.
   Las fotos y datos de la v1 estan en  ..\_archivo mapa v1 (con fotos)\
-- Panel de administracion en /admin: entrar con el usuario general y crear, editar, ocultar o eliminar activos.
-  Los cambios aparecen en el mapa al recargar la pagina.
+- Panel /admin con login: crear, editar, ocultar o eliminar activos. Todo se escribe SOLO EN ESPANOL:
+    * Tipo, categoria, operacion, estado y pais se eligen de listas -> la web los muestra en cada idioma con un diccionario.
+    * Descripcion y habitaciones/superficie (texto libre) se traducen solas al guardar (traductor gratuito MyMemory,
+      sin registro, ~5.000 caracteres/dia por equipo). Las traducciones se guardan y se pueden corregir en el panel.
+    * Boton "Traducir todo": completa las traducciones que falten (por ejemplo, al anadir un idioma nuevo).
+
+ANADIR UN IDIOMA (ej. ruso)
+  1. assets/js/i18n.js: anadir 'ru' a "idiomas", un bloque ru en "ui" y la traduccion 'ru' en cada entrada de los catalogos.
+  2. Entrar al panel y pulsar "Traducir todo".  Los nombres de pais se traducen solos.
+  Para usar un traductor de pago (DeepL, Google) con cuenta de la empresa: cambiar solo la funcion traducir() de i18n.js
+  (idealmente moverla a una Edge Function de Supabase para no exponer la clave).
 
 ESTRUCTURA
   index.html, assets/js/app.js, assets/css/style.css   mapa publico
-  admin/                                               panel (login + alta/edicion/baja)
-  assets/js/config.js                                  URL y clave publicable de Supabase (si esta vacio: usa la copia local)
-  assets/data/activos_publicos.json                    copia local de los 76 activos (modo demostracion)
-  sql/01_esquema.sql                                   tabla "activos" + seguridad RLS (lectura publica, escritura solo con login)
-  sql/02_datos.sql                                     carga inicial de los 76 activos
-  tools/migracion.py                                   regenera sql/02_datos.sql y el JSON desde los datos del cliente
+  assets/js/i18n.js                                    idiomas, textos de la web, catalogos y traductor
+  admin/                                               panel (login + alta/edicion/baja + traducciones)
+  assets/js/config.js                                  URL y clave anon de Supabase (si esta vacio: usa la copia local)
+  assets/data/activos_publicos.json                    copia local de los activos (modo demostracion)
+  sql/01_esquema.sql                                   tabla "activos" + seguridad RLS
+  sql/02_datos.sql                                     copia de los 76 activos
 
-BACKEND (Supabase, proyecto "realtyplus-hoteles", ref vugcfuhzspexscfsomdb, region Europa) - YA CONFIGURADO 11/11/2026
-  - Tabla public.activos creada (sql/01_esquema.sql) y cargados los 76 activos (sql/02_datos.sql).
-  - Usuario general creado: credenciales en ACCESO-ADMIN.txt (archivo privado, no se sube a GitHub).
-  - Registro publico de usuarios DESACTIVADO (solo entra quien se cree en Authentication > Users).
-  - config.js ya apunta al proyecto. Probado: alta, edicion, ocultar, borrar; el publico no ve ocultos ni puede escribir.
+BACKEND (Supabase, proyecto "realtyplus-hoteles", ref vugcfuhzspexscfsomdb, region Europa)
+  - Tabla public.activos con RLS: lectura publica de lo publicado; escritura solo con login.
+  - Usuario general: credenciales en ACCESO-ADMIN.txt (archivo privado, no se sube a GitHub).
+  - Registro publico de usuarios DESACTIVADO (los usuarios se crean en Authentication > Users).
 
 PENDIENTE PARA TECNOLOGIA
 - Usuarios por persona/oficina y roles (hoy hay un unico usuario general).
 - Conectar el formulario "Solicitar informacion" (hoy es demostracion).
-- Dominio propio con HTTPS; la clave publicable es publica por diseno, la seguridad esta en las politicas RLS.
+- Dominio propio con HTTPS. La clave anon es publica por diseno; la seguridad esta en las politicas RLS.
+- Traductor: si el volumen crece, pasar a DeepL/Google con cuenta de la empresa (ver arriba).
 
 Ver en local (desde esta carpeta):  python -m http.server 8795  ->  http://127.0.0.1:8795/  y  /admin/

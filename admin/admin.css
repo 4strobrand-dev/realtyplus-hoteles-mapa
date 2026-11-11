@@ -73,3 +73,7 @@ legend{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:upperc
   .g2{grid-template-columns:1fr}
   .brand span{display:none}
 }
+.span2{grid-column:1/-1}
+.lead{background:#EEF4FB;color:var(--blue);padding:10px 14px;border-radius:10px;margin:14px 0 0}
+.tr-actions{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.tr-lang{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--blue);margin:6px 0 6px}
