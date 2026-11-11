@@ -2,17 +2,19 @@ MAPA INTERACTIVO GLOBAL v2 - activos hoteleros (Realtyplus / Investplus)
 Uso interno, red de franquiciados. Prototipo: Tecnologia termina la implantacion.
 
 QUE HACE
-- Mapa publico multidioma (hoy ES / EN; selector arriba o ?lang=en en la URL).
+- Mapa publico en 7 idiomas: espanol, ingles, portugues, frances, italiano, aleman y ruso
+  (selector con el globo arriba, o ?lang=en / pt / fr / it / de / ru en la URL).
 - Sin fotos y sin direccion exacta: cada activo muestra solo su ciudad.
   Las fotos y datos de la v1 estan en  ..\_archivo mapa v1 (con fotos)\
 - Panel /admin con login: crear, editar, ocultar o eliminar activos. Todo se escribe SOLO EN ESPANOL:
     * Tipo, categoria, operacion, estado y pais se eligen de listas -> la web los muestra en cada idioma con un diccionario.
     * Descripcion y habitaciones/superficie (texto libre) se traducen solas al guardar (traductor gratuito MyMemory,
-      sin registro, ~5.000 caracteres/dia por equipo). Las traducciones se guardan y se pueden corregir en el panel.
+      sin registro, ~5.000 caracteres/dia por equipo: unos 4 activos nuevos al dia en los 6 idiomas). Las traducciones se guardan y se pueden corregir en el panel.
     * Boton "Traducir todo": completa las traducciones que falten (por ejemplo, al anadir un idioma nuevo).
 
-ANADIR UN IDIOMA (ej. ruso)
-  1. assets/js/i18n.js: anadir 'ru' a "idiomas", un bloque ru en "ui" y la traduccion 'ru' en cada entrada de los catalogos.
+ANADIR OTRO IDIOMA (ej. chino "zh")
+  Los 76 activos iniciales se tradujeron a mano (sql/traducciones_iniciales.py).
+  1. assets/js/i18n.js: anadir 'zh' a "idiomas", un bloque zh en "ui" y la traduccion 'zh' en cada entrada de los catalogos.
   2. Entrar al panel y pulsar "Traducir todo".  Los nombres de pais se traducen solos.
   Para usar un traductor de pago (DeepL, Google) con cuenta de la empresa: cambiar solo la funcion traducir() de i18n.js
   (idealmente moverla a una Edge Function de Supabase para no exponer la clave).

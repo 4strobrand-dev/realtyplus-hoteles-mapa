@@ -30,7 +30,7 @@
 
   function miles(n) {
     var s = (Math.round(n * 100) / 100).toFixed(n % 1 ? 2 : 0).split('.');
-    var sep = LANG === 'en' ? ',' : '.', dec = LANG === 'en' ? '.' : ',';
+    var sep = LANG === 'en' ? ',' : LANG === 'es' ? '.' : ' ', dec = LANG === 'en' ? '.' : ',';
     return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, sep) + (s[1] ? dec + s[1] : '');
   }
   function precioTxt(a) {
@@ -57,23 +57,24 @@
      ========================================================= */
   function aplicarIdioma() {
     var sw = $('.lang-switch');
-    if (sw) sw.innerHTML = I18N.idiomas.map(function (l) { return '<button type="button" data-lang="' + l + '">' + l.toUpperCase() + '</button>'; }).join('');
+    if (sw) {
+      var nombre = function (l) { try { var n = new Intl.DisplayNames([l], { type: 'language' }).of(l); return n.charAt(0).toUpperCase() + n.slice(1); } catch (e) { return l.toUpperCase(); } };
+      sw.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg>' +
+        '<span class="lang-cur">' + LANG.toUpperCase() + '</span><select aria-label="Idioma / Language">' + I18N.idiomas.map(function (l) {
+          return '<option value="' + l + '"' + (l === LANG ? ' selected' : '') + '>' + esc(nombre(l)) + '</option>';
+        }).join('') + '</select>';
+      sw.querySelector('select').addEventListener('change', function () {
+        var l = this.value;
+        try { localStorage.setItem('rp-lang', l); } catch (e) {}
+        var u = new URL(location.href); u.searchParams.set('lang', l); location.href = u.toString();
+      });
+    }
     document.documentElement.lang = LANG;
     $$('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
     $$('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
     $$('[data-i18n-title]').forEach(function (el) { el.setAttribute('title', t(el.getAttribute('data-i18n-title'))); el.setAttribute('aria-label', t(el.getAttribute('data-i18n-title'))); });
-    $$('.lang-switch button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === LANG); });
   }
   aplicarIdioma();
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest('.lang-switch button');
-    if (b) {
-      var l = b.getAttribute('data-lang');
-      if (l === LANG) return;
-      try { localStorage.setItem('rp-lang', l); } catch (e) {}
-      var u = new URL(location.href); u.searchParams.set('lang', l); location.href = u.toString();
-    }
-  });
 
   /* =========================================================
      Carga de datos: Supabase si está configurado; si no, copia local
